@@ -10,10 +10,10 @@ export const theme = {
   },
 
   fontFamily: {
-    regular: "montserrat-regular",
-    medium: "montserrat-medium",
-    semiBold: "montserrat-semibold",
-    bold: "montserrat-bold",
+    regular: "Montserrat_400Regular",
+    medium: "Montserrat_500Medium",
+    semiBold: "Montserrat_600SemiBold",
+    bold: "Montserrat_700Bold",
   },
 
   colors: {
