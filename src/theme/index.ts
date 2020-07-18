@@ -1,8 +1,8 @@
-export const theme = {
+export const variables = {
   fontSize: {
-    big: 96,
-    h1: 28,
-    h2: 24,
+    big: 76,
+    h1: 24,
+    h2: 18,
     h3: 16,
     h4: 14,
     h5: 12,
@@ -17,8 +17,7 @@ export const theme = {
   },
 
   colors: {
-    orange500: "#E77E38",
-    red500: "#F5442F",
+    orange500: "#FF7F51",
     black600: "#141414",
     black500: "#1D1D1D",
     black400: "#292929",
