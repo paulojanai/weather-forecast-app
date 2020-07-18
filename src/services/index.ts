@@ -6,7 +6,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  config.params = { appid: APP_ID };
+  config.params = { appid: APP_ID, units: "metric" };
   return config;
 });
 
