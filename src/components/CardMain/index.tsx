@@ -1,24 +1,38 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
+
 import styles from "./styles";
 import { variables } from "../../theme";
 
-const CardMain = () => {
+import { Data } from "../../pages/home";
+
+import moment from "moment";
+import "moment/locale/pt-br";
+
+interface Props {
+  data: Data;
+}
+
+const CardMain: React.FC<Props> = ({ data }) => {
   return (
     <View style={styles.contentCard}>
       <View style={styles.inline}>
         <Icon name="map-pin" size={32} color={variables.colors.orange500} />
         <View style={{ marginLeft: 16 }}>
-          <Text style={styles.nameCity}>Canindé, CE</Text>
-          <Text style={styles.data}>Sábado, 09 de Maio</Text>
+          <Text style={styles.nameCity}>
+            {data.city}, {data.uf}
+          </Text>
+          <Text style={styles.data}>
+            {moment().format("dddd, D [de] MMMM")}
+          </Text>
         </View>
       </View>
 
       <View style={[styles.inline, { justifyContent: "space-between" }]}>
-        <Text style={styles.tem}>-37°</Text>
+        <Text style={styles.tem}>{data.temp.toFixed(0)}°</Text>
         <Image
-          style={{ width: 98, height: 100 }}
+          style={styles.img}
           source={require("../../../assets/cloudy.png")}
           resizeMode="contain"
         />
@@ -34,11 +48,11 @@ const CardMain = () => {
           ]}
         >
           <Icon name="arrow-down" size={16} color={variables.colors.gray500} />
-          <Text style={styles.temps}>Min: 28°</Text>
+          <Text style={styles.temps}>Min: {data.temp_min.toFixed(0)}</Text>
         </View>
         <View style={styles.inline}>
           <Icon name="arrow-up" size={16} color={variables.colors.gray500} />
-          <Text style={styles.temps}>Max: 35°</Text>
+          <Text style={styles.temps}>Max: {data.temp_max.toFixed(0)}</Text>
         </View>
       </View>
     </View>
