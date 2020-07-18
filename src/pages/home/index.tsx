@@ -5,7 +5,6 @@ import { Feather as Icon } from "@expo/vector-icons";
 import CardStatus from "../../components/CardStatus";
 import CardMain from "../../components/CardMain";
 import styles from "./styles";
-// https://api.openweathermap.org/data/2.5/weather?q=Fortaleza,BR&appid=60a27bac5e46189541a2e929d81cf795
 
 import { variables } from "../../theme";
 import api from "../../services";
@@ -110,6 +109,9 @@ const Home = () => {
         ) : (
           <CardStatus error={error} />
         )}
+      </View>
+
+      <View style={styles.body}>
         <Text>Informações adicionais</Text>
       </View>
     </View>

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "weather-forecast-app",
+    "name": "Weather Forecast",
     "slug": "weather-forecast-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,16 +8,26 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF7F51"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.weather.forecast"
+    },
+    "android": {
+      "package": "com.weather.forecast",
+      "adaptiveIcon": {
+        "backgroundColor": "#FF7F51",
+        "foregroundImage": "./assets/icon.png"
+      },
+      "versionCode": 1
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#FFFFFF"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -8,7 +8,9 @@ const styles = StyleSheet.create({
   },
 
   body: {
-    margin: 24,
+    marginBottom: 24,
+    marginLeft: 24,
+    marginRight: 24,
   },
 
   cardHeader: {
