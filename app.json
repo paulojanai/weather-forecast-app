@@ -27,7 +27,7 @@
       "versionCode": 1
     },
     "androidStatusBar": {
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#FF7F51"
     },
     "web": {
       "favicon": "./assets/favicon.png"
