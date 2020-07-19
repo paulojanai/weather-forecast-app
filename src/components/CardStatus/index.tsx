@@ -21,7 +21,7 @@ const CardStatus: React.FC<Props> = ({ error }) => {
         <View>
           <Text style={styles.title}>Opps.</Text>
           <Text style={styles.text}>
-            Nenhuma resultado{`\n`}encontrada para sua busca.
+            Nenhum resultado{`\n`}encontrado para sua busca.
           </Text>
         </View>
       ) : (
