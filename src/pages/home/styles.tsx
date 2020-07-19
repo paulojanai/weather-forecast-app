@@ -56,9 +56,9 @@ const styles = StyleSheet.create({
     backgroundColor: variables.colors.white500 + "16",
   },
 
-  title: {
+  info: {
     textAlign: "center",
-    color: variables.colors.white500,
+    color: variables.colors.gray500,
     fontFamily: variables.fontFamily.semiBold,
     fontSize: variables.fontSize.h4,
   },

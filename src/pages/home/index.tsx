@@ -6,9 +6,11 @@ import {
   ActivityIndicator,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 
+import CardDetail from "../../components/CardDetail";
 import CardStatus from "../../components/CardStatus";
 import CardMain from "../../components/CardMain";
 import styles from "./styles";
@@ -23,10 +25,20 @@ export interface Data {
   temp_max: number;
 }
 
+interface Details {
+  wind: number;
+  visibility: number;
+  humidity: number;
+  clouds: number;
+}
+
 const Home = () => {
   const [nameCity, setNameCity] = useState("");
   const [error, setError] = useState(false);
+
   const [data, setData] = useState<Data>({} as Data);
+  const [details, setDetails] = useState<Details>({} as Details);
+
   const [loading, setLoading] = useState(false);
 
   async function handleCity() {
@@ -34,18 +46,29 @@ const Home = () => {
     return api
       .get(`?q=${nameCity}`)
       .then((res) => {
+        const data = res.data;
+
         setData({
-          city: res.data.name,
-          uf: res.data.sys.country,
-          temp: res.data.main.temp,
-          temp_min: res.data.main.temp_min,
-          temp_max: res.data.main.temp_max,
-        }),
-          setLoading(false);
+          city: data.name,
+          uf: data.sys.country,
+          temp: data.main.temp,
+          temp_min: data.main.temp_min,
+          temp_max: data.main.temp_max,
+        });
+
+        setDetails({
+          wind: data.wind.speed,
+          visibility: data.visibility,
+          humidity: data.main.humidity,
+          clouds: data.clouds.all,
+        });
+
+        setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
         setData({} as Data);
+        setDetails({} as Details);
         setError(true);
       });
   }
@@ -97,8 +120,9 @@ const Home = () => {
               selectionColor={variables.colors.white500 + "18"}
               autoCapitalize="words"
               style={styles.input}
-              onChangeText={(value) => setNameCity(value)}
               value={nameCity}
+              onChangeText={(value) => setNameCity(value)}
+              onSubmitEditing={() => handleCity()}
             />
           </View>
 
@@ -125,7 +149,7 @@ const Home = () => {
         </View>
       </View>
 
-      <View style={[styles.body, { marginTop: -132 }]}>
+      <View style={[styles.body, { marginTop: -134 }]}>
         {data.uf?.length > 0 ? (
           <CardMain data={data} />
         ) : (
@@ -134,8 +158,46 @@ const Home = () => {
       </View>
 
       <View style={styles.body}>
-        <Text>Informações adicionais</Text>
+        <Text style={styles.info}>Informações adicionais</Text>
       </View>
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingHorizontal: 26,
+        }}
+      >
+        <CardDetail
+          nameIcon="droplet"
+          title="Umidade"
+          // description="Quantidade de água existente no ar"
+          value={`${details.humidity ? details.humidity : 0}%`}
+        />
+
+        <CardDetail
+          nameIcon="wind"
+          title="Ventos"
+          // description="Velocidade relativa a intensidade do vento"
+          value={`${details.wind ? details.wind : 0} km/h`}
+        />
+
+        <CardDetail
+          nameIcon="sun"
+          title="Visibilidade"
+          // description="É a distância máxima na qual um objeto pode ser visto"
+          value={`${details.visibility ? details.visibility : 0}km`}
+        />
+
+        <View style={{ marginRight: -12 }}>
+          <CardDetail
+            nameIcon="cloud"
+            title="Nuvens"
+            // description="Parte do céu encoberto por uma camada de nuvens"
+            value={`${details.clouds ? details.clouds : 0}%`}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };
