@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
 
   searchBtn: {
     height: 64,
-    textAlign: "center",
-    textAlignVertical: "center",
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 12,
     backgroundColor: variables.colors.white500 + "16",
   },

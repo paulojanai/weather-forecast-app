@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StatusBar, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  StatusBar,
+  ActivityIndicator,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 
 import CardStatus from "../../components/CardStatus";
@@ -20,20 +27,24 @@ const Home = () => {
   const [nameCity, setNameCity] = useState("");
   const [error, setError] = useState(false);
   const [data, setData] = useState<Data>({} as Data);
+  const [loading, setLoading] = useState(false);
 
   async function handleCity() {
+    setLoading(true);
     return api
       .get(`?q=${nameCity}`)
-      .then((res) =>
+      .then((res) => {
         setData({
           city: res.data.name,
           uf: res.data.sys.country,
           temp: res.data.main.temp,
           temp_min: res.data.main.temp_min,
           temp_max: res.data.main.temp_max,
-        })
-      )
+        }),
+          setLoading(false);
+      })
       .catch((error) => {
+        setLoading(false);
         setData({} as Data);
         setError(true);
       });
@@ -82,7 +93,7 @@ const Home = () => {
             />
             <TextInput
               placeholder="Nome da cidade"
-              placeholderTextColor={variables.colors.white500}
+              placeholderTextColor={variables.colors.white500 + "80"}
               selectionColor={variables.colors.white500 + "18"}
               autoCapitalize="words"
               style={styles.input}
@@ -92,13 +103,24 @@ const Home = () => {
           </View>
 
           <View style={{ marginLeft: "4%", width: "18%" }}>
-            <Icon
-              style={styles.searchBtn}
-              name="navigation"
-              size={22}
-              color={variables.colors.white500}
+            <TouchableOpacity
+              activeOpacity={0.8}
               onPress={() => handleCity()}
-            />
+              style={styles.searchBtn}
+            >
+              {loading ? (
+                <ActivityIndicator
+                  size="small"
+                  color={variables.colors.white500}
+                />
+              ) : (
+                <Icon
+                  name="navigation"
+                  size={22}
+                  color={variables.colors.white500}
+                />
+              )}
+            </TouchableOpacity>
           </View>
         </View>
       </View>
