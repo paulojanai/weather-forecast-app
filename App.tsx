@@ -1,5 +1,6 @@
 import React from "react";
 import { AppLoading } from "expo";
+import { StatusBar } from "react-native";
 import {
   useFonts,
   Montserrat_400Regular,
@@ -7,6 +8,9 @@ import {
   Montserrat_600SemiBold,
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
+
+//theme
+import { variables } from "./src/theme";
 
 //screen
 import Home from "./src/pages/home";
@@ -21,6 +25,14 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-    return <Home />;
+    return (
+      <>
+        <StatusBar
+          backgroundColor={variables.colors.orange500}
+          barStyle="light-content"
+        />
+        <Home />
+      </>
+    );
   }
 }

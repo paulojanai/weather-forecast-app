@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  StatusBar,
   ActivityIndicator,
   TextInput,
   TouchableOpacity,
@@ -81,10 +80,6 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar
-        backgroundColor={variables.colors.orange500}
-        barStyle="light-content"
-      />
       <View style={styles.cardHeader}>
         <View style={styles.header}>
           <Icon
