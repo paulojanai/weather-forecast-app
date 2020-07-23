@@ -4,9 +4,11 @@ import { StatusBar } from "react-native";
 import {
   useFonts,
   Montserrat_400Regular,
+  Montserrat_400Regular_Italic,
   Montserrat_500Medium,
   Montserrat_600SemiBold,
   Montserrat_700Bold,
+  Montserrat_700Bold_Italic,
 } from "@expo-google-fonts/montserrat";
 
 //theme
@@ -18,9 +20,11 @@ import Home from "./src/pages/home";
 export default function App() {
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
+    Montserrat_400Regular_Italic,
     Montserrat_500Medium,
     Montserrat_600SemiBold,
     Montserrat_700Bold,
+    Montserrat_700Bold_Italic,
   });
   if (!fontsLoaded) {
     return <AppLoading />;

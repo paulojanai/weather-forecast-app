@@ -152,9 +152,9 @@ const Home = () => {
         )}
       </View>
 
-      <View style={styles.body}>
+      {/* <View style={styles.body}>
         <Text style={styles.info}>Informações adicionais</Text>
-      </View>
+      </View> */}
 
       <ScrollView
         horizontal

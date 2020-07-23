@@ -3,7 +3,7 @@ import { variables } from "../../theme";
 
 const styles = StyleSheet.create({
   contentCard: {
-    height: 290,
+    height: 260,
     backgroundColor: variables.colors.white500,
     padding: 36,
     borderRadius: 12,
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    width: 98,
-    height: 100,
+    width: 82,
+    height: 82,
   },
 
   inline: { flexDirection: "row", alignItems: "center" },

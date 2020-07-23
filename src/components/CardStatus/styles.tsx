@@ -3,7 +3,7 @@ import { variables } from "../../theme";
 
 const styles = StyleSheet.create({
   contentCard: {
-    height: 290,
+    height: 260,
     alignItems: "center",
     justifyContent: "space-around",
     backgroundColor: variables.colors.white500,
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 
   title: {
     textAlign: "center",
-    fontFamily: variables.fontFamily.semiBold,
+    fontFamily: variables.fontFamily.bold_italic,
     fontSize: variables.fontSize.h2,
     color: variables.colors.black500,
     marginBottom: 16,
@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
 
   text: {
     textAlign: "center",
-    fontFamily: variables.fontFamily.regular,
+    fontFamily: variables.fontFamily.regular_italic,
     fontSize: variables.fontSize.h4,
     color: variables.colors.gray500,
   },
 
   img: {
-    width: 98,
-    height: 100,
+    width: 82,
+    height: 82,
   },
 });
 

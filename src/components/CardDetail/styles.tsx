@@ -3,8 +3,8 @@ import { variables } from "../../theme";
 
 const styles = StyleSheet.create({
   contentCard: {
-    height: 160,
-    width: 160,
+    height: 140,
+    width: 140,
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: variables.colors.white500,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   value: {
     textAlign: "center",
     fontFamily: variables.fontFamily.bold,
-    fontSize: variables.fontSize.h1,
+    fontSize: variables.fontSize.h2,
     color: variables.colors.black400,
   },
 

@@ -1,6 +1,6 @@
 export const variables = {
   fontSize: {
-    big: 76,
+    big: 62,
     h1: 24,
     h2: 18,
     h3: 16,
@@ -11,9 +11,11 @@ export const variables = {
 
   fontFamily: {
     regular: "Montserrat_400Regular",
+    regular_italic: "Montserrat_400Regular_Italic",
     medium: "Montserrat_500Medium",
     semiBold: "Montserrat_600SemiBold",
     bold: "Montserrat_700Bold",
+    bold_italic: "Montserrat_700Bold_Italic",
   },
 
   colors: {
