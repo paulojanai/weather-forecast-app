@@ -16,6 +16,12 @@ import styles from "./styles";
 
 import { variables } from "../../theme";
 import api from "../../services";
+
+const humidity_img = require("../../../assets/humidity.png");
+const wind_img = require("../../../assets/wind.png");
+const sun_img = require("../../../assets/sun.png");
+const clouds_img = require("../../../assets/clouds.png");
+
 export interface Data {
   city: String;
   uf: String;
@@ -166,6 +172,7 @@ const Home = () => {
         <CardDetail
           nameIcon="droplet"
           title="Umidade"
+          img={humidity_img}
           // description="Quantidade de água existente no ar"
           value={`${details.humidity ? details.humidity : 0}%`}
         />
@@ -173,6 +180,7 @@ const Home = () => {
         <CardDetail
           nameIcon="wind"
           title="Ventos"
+          img={wind_img}
           // description="Velocidade relativa a intensidade do vento"
           value={`${details.wind ? details.wind : 0} km/h`}
         />
@@ -180,7 +188,7 @@ const Home = () => {
         <CardDetail
           nameIcon="sun"
           title="Visibilidade"
-          // description="É a distância máxima na qual um objeto pode ser visto"
+          img={sun_img} // description="É a distância máxima na qual um objeto pode ser visto"
           value={`${details.visibility ? details.visibility : 0}km`}
         />
 
@@ -188,6 +196,7 @@ const Home = () => {
           <CardDetail
             nameIcon="cloud"
             title="Nuvens"
+            img={clouds_img}
             // description="Parte do céu encoberto por uma camada de nuvens"
             value={`${details.clouds ? details.clouds : 0}%`}
           />

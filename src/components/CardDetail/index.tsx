@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 
 import styles from "./styles";
@@ -8,6 +8,7 @@ import { variables } from "../../theme";
 interface Props {
   nameIcon: String;
   title: String;
+  img: Object;
   // description: String;
   value: String;
 }
@@ -15,6 +16,7 @@ interface Props {
 const CardDetail: React.FC<Props> = ({
   nameIcon,
   title,
+  img,
   // description,
   value,
 }) => {
@@ -27,10 +29,10 @@ const CardDetail: React.FC<Props> = ({
           justifyContent: "center",
         }}
       >
-        <Icon
-          name={`${nameIcon}`}
-          color={variables.colors.orange500}
-          size={32}
+        <Image
+          style={{ height: 42, width: 42 }}
+          source={img}
+          resizeMode="contain"
         />
       </View>
       <View style={{ flex: 5 }}>
