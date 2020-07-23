@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
 
   body: {
-    marginBottom: 24,
+    marginBottom: 16,
     marginLeft: 24,
     marginRight: 24,
   },

@@ -1,9 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import { Feather as Icon } from "@expo/vector-icons";
 
 import styles from "./styles";
-import { variables } from "../../theme";
 
 interface Props {
   nameIcon: String;

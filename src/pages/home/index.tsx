@@ -16,6 +16,7 @@ import styles from "./styles";
 
 import { variables } from "../../theme";
 import api from "../../services";
+import Tag from "../../components/Tag";
 
 const humidity_img = require("../../../assets/humidity.png");
 const wind_img = require("../../../assets/wind.png");
@@ -168,6 +169,7 @@ const Home = () => {
         contentContainerStyle={{
           paddingHorizontal: 26,
         }}
+        style={{ marginTop: 6 }}
       >
         <CardDetail
           nameIcon="droplet"
@@ -202,6 +204,10 @@ const Home = () => {
           />
         </View>
       </ScrollView>
+
+      <View style={styles.body}>
+        <Tag />
+      </View>
     </View>
   );
 };
