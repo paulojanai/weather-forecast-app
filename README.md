@@ -21,7 +21,7 @@ This project was developed to practice and always develop with the best of UI / 
 
 ## 🔖 Layout and Design
 
-Prototype developed by <a href="https://www.linkedin.com/in/paulojanai/" style="color: #00a0df" target="_blank">me</a>. See a preview of the app [preview XD](https://adobe.ly/2ZFgOSS).
+Prototype developed by <a href="https://www.linkedin.com/in/paulojanai/" style="color: #00a0df" target="_blank">me</a>. See a preview of the app [QRCode Expo](https://expo.io/@paulojanai/weather-forecast-app) or [preview XD](https://adobe.ly/2ZFgOSS).
 
 #### Screens
 
