@@ -14,11 +14,13 @@ import { Feather as Icon } from "@expo/vector-icons";
 import CardDetail from "../../components/CardDetail";
 import CardStatus from "../../components/CardStatus";
 import CardMain from "../../components/CardMain";
-import styles from "./styles";
-
-import { variables } from "../../theme";
-import api from "../../services";
 import Tag from "../../components/Tag";
+
+import styles from "./styles";
+import { variables } from "../../theme";
+
+import api from "../../services";
+
 import {
   fadeInTop,
   findOut,

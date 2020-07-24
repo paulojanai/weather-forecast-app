@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     height: 120,
     justifyContent: "space-around",
     backgroundColor: variables.colors.orange500,
-    padding: 36,
+    padding: 26,
     borderRadius: 12,
   },
 
@@ -25,10 +25,15 @@ const styles = StyleSheet.create({
     color: variables.colors.white500 + "80",
   },
 
-  img: {
+  thumb: {
     position: "absolute",
-    top: 2,
-    right: 0,
+    overflow: "hidden",
+    right: -20,
+    height: 98,
+  },
+
+  img: {
+    top: 32,
     width: 98,
     height: 100,
   },

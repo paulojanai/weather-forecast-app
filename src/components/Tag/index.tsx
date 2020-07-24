@@ -12,7 +12,9 @@ const Tag: React.FC = () => {
         <Text style={styles.text}>
           Pesquise utilizando sua {"\n"}localização atual.
         </Text>
-        <Image style={styles.img} source={location} resizeMode="contain" />
+        <View style={styles.thumb}>
+          <Image style={styles.img} source={location} resizeMode="contain" />
+        </View>
       </View>
     </View>
   );
