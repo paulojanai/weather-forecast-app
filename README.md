@@ -2,11 +2,10 @@
 
 >
 
-<h1 style="color: #FF7F51" align="center">
-    Weather Forecast
-</h1>
+# ![Post 1 image](.images/banner.png)
+
 <p align="center">
-  <img alt="MIT license" src="https://img.shields.io/github/license/paulojanai/weather-forecast-app">
+  <!-- <img alt="MIT license" src="https://img.shields.io/github/license/paulojanai/weather-forecast-app"> -->
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/paulojanai/weather-forecast-app">
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/paulojanai/weather-forecast-app">
 </p>
@@ -25,11 +24,11 @@ Prototype developed by <a href="https://www.linkedin.com/in/paulojanai/" style="
 
 #### Screens
 
-# ![Home image](.images/post_1.png)
+# ![Post 1 image](.images/post_1.png)
 
 #### Components
 
-# ![Home image](.images/post_2.png)
+# ![Post 2 image](.images/post_2.png)
 
 >
 
