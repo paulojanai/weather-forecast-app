@@ -19,6 +19,12 @@ import styles from "./styles";
 import { variables } from "../../theme";
 import api from "../../services";
 import Tag from "../../components/Tag";
+import {
+  fadeInTop,
+  findOut,
+  opacityAnimated,
+  changeColorText,
+} from "../../animated";
 
 const humidity_img = require("../../../assets/humidity.png");
 const wind_img = require("../../../assets/wind.png");
@@ -53,24 +59,6 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
 
   const scrollY = new Animated.Value(0);
-
-  const positionRight = scrollY.interpolate({
-    inputRange: [0, WITDH_SCREEN],
-    outputRange: [0, WITDH_SCREEN],
-  });
-
-  const opacityAnimated = scrollY.interpolate({
-    inputRange: [0, 1, WITDH_SCREEN / 1.5],
-    outputRange: [1, 1, 0],
-  });
-
-  const textInfo = scrollY.interpolate({
-    inputRange: [0, HEIGHT_SCREEN / 4],
-    outputRange: [
-      `${variables.colors.gray500}`,
-      `${variables.colors.white500}`,
-    ],
-  });
 
   async function handleCity() {
     setLoading(true);
@@ -181,9 +169,9 @@ const Home = () => {
           styles.body,
           {
             marginTop: -140,
-            zIndex: 2,
-            bottom: positionRight,
-            opacity: opacityAnimated,
+            zIndex: findOut(scrollY),
+            bottom: fadeInTop(scrollY),
+            opacity: opacityAnimated(scrollY),
           },
         ]}
       >
@@ -202,10 +190,12 @@ const Home = () => {
           { useNativeDriver: false }
         )}
       >
-        <View style={{ height: 264 }} />
+        <View style={{ height: 264, display: "flex" }} />
 
         <View style={styles.body}>
-          <Animated.Text style={[styles.info, { color: textInfo }]}>
+          <Animated.Text
+            style={[styles.info, { color: changeColorText(scrollY) }]}
+          >
             Informações adicionais
           </Animated.Text>
         </View>
