@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   },
 
   cardHeader: {
+    zIndex: 1,
     height: 290,
     padding: 24,
     backgroundColor: variables.colors.orange500,

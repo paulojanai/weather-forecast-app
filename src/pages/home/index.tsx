@@ -6,6 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Animated,
+  Dimensions,
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 
@@ -38,6 +40,9 @@ interface Details {
   clouds: number;
 }
 
+const WITDH_SCREEN = Dimensions.get("window").width;
+const HEIGHT_SCREEN = Dimensions.get("window").height;
+
 const Home = () => {
   const [nameCity, setNameCity] = useState("");
   const [error, setError] = useState(false);
@@ -46,6 +51,26 @@ const Home = () => {
   const [details, setDetails] = useState<Details>({} as Details);
 
   const [loading, setLoading] = useState(false);
+
+  const scrollY = new Animated.Value(0);
+
+  const positionRight = scrollY.interpolate({
+    inputRange: [0, WITDH_SCREEN],
+    outputRange: [0, WITDH_SCREEN],
+  });
+
+  const opacityAnimated = scrollY.interpolate({
+    inputRange: [0, 1, WITDH_SCREEN / 1.5],
+    outputRange: [1, 1, 0],
+  });
+
+  const textInfo = scrollY.interpolate({
+    inputRange: [0, HEIGHT_SCREEN / 4],
+    outputRange: [
+      `${variables.colors.gray500}`,
+      `${variables.colors.white500}`,
+    ],
+  });
 
   async function handleCity() {
     setLoading(true);
@@ -106,7 +131,7 @@ const Home = () => {
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: 32,
+            marginTop: 24,
           }}
         >
           <View style={{ width: "78%" }}>
@@ -151,63 +176,88 @@ const Home = () => {
         </View>
       </View>
 
-      <View style={[styles.body, { marginTop: -134 }]}>
+      <Animated.View
+        style={[
+          styles.body,
+          {
+            marginTop: -140,
+            zIndex: 2,
+            bottom: positionRight,
+            opacity: opacityAnimated,
+          },
+        ]}
+      >
         {data.uf?.length > 0 ? (
           <CardMain data={data} />
         ) : (
           <CardStatus error={error} />
         )}
-      </View>
+      </Animated.View>
 
-      {/* <View style={styles.body}>
-        <Text style={styles.info}>Informações adicionais</Text>
-      </View> */}
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingHorizontal: 26,
-        }}
-        style={{ marginTop: 6 }}
+      <Animated.ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ marginTop: -260, zIndex: 2 }}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          { useNativeDriver: false }
+        )}
       >
-        <CardDetail
-          nameIcon="droplet"
-          title="Umidade"
-          img={humidity_img}
-          // description="Quantidade de água existente no ar"
-          value={`${details.humidity ? details.humidity : 0}%`}
-        />
+        <View style={{ height: 264 }} />
 
-        <CardDetail
-          nameIcon="wind"
-          title="Ventos"
-          img={wind_img}
-          // description="Velocidade relativa a intensidade do vento"
-          value={`${details.wind ? details.wind : 0} km/h`}
-        />
-
-        <CardDetail
-          nameIcon="sun"
-          title="Visibilidade"
-          img={sun_img} // description="É a distância máxima na qual um objeto pode ser visto"
-          value={`${details.visibility ? details.visibility : 0}km`}
-        />
-
-        <View style={{ marginRight: -12 }}>
-          <CardDetail
-            nameIcon="cloud"
-            title="Nuvens"
-            img={clouds_img}
-            // description="Parte do céu encoberto por uma camada de nuvens"
-            value={`${details.clouds ? details.clouds : 0}%`}
-          />
+        <View style={styles.body}>
+          <Animated.Text style={[styles.info, { color: textInfo }]}>
+            Informações adicionais
+          </Animated.Text>
         </View>
-      </ScrollView>
 
-      <View style={styles.body}>
-        <Tag />
-      </View>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 26,
+          }}
+          style={{ marginTop: 8 }}
+        >
+          <CardDetail
+            nameIcon="droplet"
+            title="Umidade"
+            img={humidity_img}
+            // description="Quantidade de água existente no ar"
+            value={`${details.humidity ? details.humidity : 0}%`}
+          />
+
+          <CardDetail
+            nameIcon="wind"
+            title="Ventos"
+            img={wind_img}
+            // description="Velocidade relativa a intensidade do vento"
+            value={`${details.wind ? details.wind : 0} km/h`}
+          />
+
+          <CardDetail
+            nameIcon="sun"
+            title="Visibilidade"
+            img={sun_img} // description="É a distância máxima na qual um objeto pode ser visto"
+            value={`${details.visibility ? details.visibility : 0}km`}
+          />
+
+          <View style={{ marginRight: -12 }}>
+            <CardDetail
+              nameIcon="cloud"
+              title="Nuvens"
+              img={clouds_img}
+              // description="Parte do céu encoberto por uma camada de nuvens"
+              value={`${details.clouds ? details.clouds : 0}%`}
+            />
+          </View>
+        </ScrollView>
+
+        <View style={[styles.body, { marginTop: 24 }]}>
+          <Tag />
+        </View>
+
+        <View style={{ height: 64 }} />
+      </Animated.ScrollView>
     </View>
   );
 };
