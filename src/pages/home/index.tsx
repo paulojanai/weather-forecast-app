@@ -48,9 +48,6 @@ interface Details {
   clouds: number;
 }
 
-const WITDH_SCREEN = Dimensions.get("window").width;
-const HEIGHT_SCREEN = Dimensions.get("window").height;
-
 const Home = () => {
   const [nameCity, setNameCity] = useState("");
   const [error, setError] = useState(false);
@@ -87,6 +84,8 @@ const Home = () => {
         setLoading(false);
       })
       .catch((error) => {
+        console.log(error);
+
         setLoading(false);
         setData({} as Data);
         setDetails({} as Details);
@@ -116,6 +115,7 @@ const Home = () => {
             color={variables.colors.white500}
           />
         </View>
+
         {/* Input search */}
         <View
           style={{

@@ -26,6 +26,7 @@ export default function App() {
     Montserrat_700Bold,
     Montserrat_700Bold_Italic,
   });
+
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
