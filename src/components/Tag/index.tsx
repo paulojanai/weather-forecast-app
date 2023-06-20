@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
 
-const location = require("../../../assets/location.png");
+const location = require("@assets/location.png");
 
 const Tag: React.FC = () => {
   return (

@@ -11,27 +11,27 @@ import {
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 
-import CardDetail from "../../components/CardDetail";
-import CardStatus from "../../components/CardStatus";
-import CardMain from "../../components/CardMain";
-import Tag from "../../components/Tag";
+import CardDetail from "@components/CardDetail";
+import CardStatus from "@components/CardStatus";
+import CardMain from "@components/CardMain";
+import Tag from "@components/Tag";
 
 import styles from "./styles";
-import { variables } from "../../theme";
+import { variables } from "@theme/index";
 
-import api from "../../services";
+import api from "@services/index";
 
 import {
   fadeInTop,
   findOut,
   opacityAnimated,
   changeColorText,
-} from "../../animated";
+} from "@animated/index";
 
-const humidity_img = require("../../../assets/humidity.png");
-const wind_img = require("../../../assets/wind.png");
-const sun_img = require("../../../assets/sun.png");
-const clouds_img = require("../../../assets/clouds.png");
+const humidity_img = require("@assets/humidity.png");
+const wind_img = require("@assets/wind.png");
+const sun_img = require("@assets/sun.png");
+const clouds_img = require("@assets/clouds.png");
 
 export interface Data {
   city: String;

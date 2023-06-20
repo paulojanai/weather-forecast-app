@@ -1,6 +1,7 @@
-import React from "react";
-import { AppLoading } from "expo";
-import { StatusBar } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
+import Entypo from "@expo/vector-icons/Entypo";
 import {
   useFonts,
   Montserrat_400Regular,
@@ -11,11 +12,10 @@ import {
   Montserrat_700Bold_Italic,
 } from "@expo-google-fonts/montserrat";
 
-//theme
-import { variables } from "./src/theme";
-
 //screen
-import Home from "./src/pages/home";
+import Home from "@pages/home";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -27,17 +27,36 @@ export default function App() {
     Montserrat_700Bold_Italic,
   });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <>
-        <StatusBar
-          backgroundColor={variables.colors.orange500}
-          barStyle="light-content"
-        />
-        <Home />
-      </>
-    );
-  }
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  // useEffect(() => {
+  //   async function prepare() {
+  //     try {
+  //       // Pre-load fonts, make any API calls you need to do here
+  //       await Font.loadAsync(Entypo.font);
+  //       // Artificially delay for two seconds to simulate a slow loading
+  //       // experience. Please remove this if you copy and paste the code!
+  //       await new Promise((resolve) => setTimeout(resolve, 2000));
+  //     } catch (e) {
+  //       console.warn(e);
+  //     } finally {
+  //       // Tell the application to render
+  //       setAppIsReady(true);
+  //     }
+  //   }
+
+  //   prepare();
+  // }, []);
+
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (appIsReady) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [appIsReady]);
+
+  // if (!appIsReady) {
+  //   return null;
+  // }
+
+  return <Home />;
 }

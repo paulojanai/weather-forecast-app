@@ -1,10 +1,14 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { variables } from "../../theme";
+import { variables } from "@theme/index";
 
 // import { Container } from './styles';
 
-const Card: React.FC = ({ children }) => {
+interface Props {
+  children?: React.ReactNode;
+}
+
+const Card: React.FC<Props> = ({ children }) => {
   return <View style={styles.contentCard}>{children}</View>;
 };
 
