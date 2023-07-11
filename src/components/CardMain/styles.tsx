@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    width: 82,
-    height: 82,
+    width: 120,
+    height: 120,
   },
 
   inline: { flexDirection: "row", alignItems: "center" },

@@ -33,7 +33,10 @@ const CardMain: React.FC<Props> = ({ data }) => {
         <Text style={styles.tem}>{data.temp.toFixed(0)}°</Text>
         <Image
           style={styles.img}
-          source={require("../../../assets/cloudy.png")}
+          source={{
+            uri: `https://openweathermap.org/img/wn/${data.img}@2x.png`,
+            // uri: `https://openweathermap.org/img/wn/10d@2x.png`,
+          }}
           resizeMode="contain"
         />
       </View>

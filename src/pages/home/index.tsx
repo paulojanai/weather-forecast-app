@@ -35,6 +35,7 @@ const clouds_img = require("@assets/clouds.png");
 
 export interface Data {
   city: String;
+  img: String;
   uf: String;
   temp: number;
   temp_min: number;
@@ -68,6 +69,7 @@ const Home = () => {
 
         setData({
           city: data.name,
+          img: data.weather[0].icon,
           uf: data.sys.country,
           temp: data.main.temp,
           temp_min: data.main.temp_min,
